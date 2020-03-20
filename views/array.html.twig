@@ -1,0 +1,18 @@
+
+	
+{{ include('./layout/menu.php') }}
+
+{% set texto = 'ARRAY' %}
+    <h1> {{ texto }} </h1>
+
+{% for usuario in usuarios %}
+    <h1> Nome: {{ usuario.nome }} </h1>
+    <h2> Idade: {{ usuario.idade }} </h2>
+    <h2> Sexo: {{ usuario.sexo }} </h2>
+    <hr>
+{% else %} 
+    <h1> Array Vazio </h1>
+{% endfor %}
+
+{{ include('./layout/footer.html') }}
+
