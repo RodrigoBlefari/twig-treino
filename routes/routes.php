@@ -3,22 +3,19 @@
 error_reporting(-1);
 ini_set('display_errors', 'On');
 
-require 'vendor/autoload.php';
+//require 'vendor/autoload.php';
+
+require 'app/controllers/homeController.php';
+require 'app/controllers/variaveisController.php';
+require 'app/controllers/filtrosController.php';
+require 'app/controllers/funcoesController.php';
 
 class Routes
 {
-
     private $pagina;
-    private $loader;
-    private $twig;
 
     function __construct()
     {
-        $this->loader = new Twig_Loader_Filesystem('./views/');
-        $this->twig = new Twig_Environment($this->loader, [
-            'cache' => 'views/cache/',
-            'cache' => false
-        ]);
         $this->pagina = 'home';
         if (array_key_exists('pg', $_REQUEST)) $this->pagina = $_REQUEST['pg'];
         $this->redirectUrl();
@@ -26,85 +23,18 @@ class Routes
 
     public function redirectUrl()
     {
-
-        if ($this->pagina == '') $this->goHome();
-        if ($this->pagina == 'home') $this->goHome();
-        if ($this->pagina == 'vars') $this->goVars();
-        if ($this->pagina == 'array') $this->goArray();
+        if (($this->pagina == 'home') || ($this->pagina == '')) $this->goHome();
+        if ($this->pagina == 'variaveis') $this->goVariaveis();
+        if ($this->pagina == 'filtros') $this->goFiltros();
+        if ($this->pagina == 'funcoes') $this->goFuncoes();
     }
 
-    private function goHome()
-    {
-
-        $usuarios = [
-            [
-                'nome' => 'Rodrigo Blefari Gonçalves',
-                'idade' => 30,
-                'sexo' => 'Masculino'
-            ],
-            [
-                'nome' => 'Maria Joaquina',
-                'idade' => 25,
-                'sexo' => 'Feminino'
-            ]
-        ];
-
-        $view = 'home.html.twig';
-
-        $template = $this->twig->load($view);
-        echo $template->render([
-            'usuarios' => $usuarios,
-            'pagina' =>$this->pagina
-        ]);
-    }
-
-    private function goVars()
-    {
-
-        $usuarios = [
-            [
-                'nome' => 'Rodrigo Blefari Gonçalves',
-                'idade' => 30,
-                'sexo' => 'Masculino'
-            ],
-            [
-                'nome' => 'Maria Joaquina',
-                'idade' => 25,
-                'sexo' => 'Feminino'
-            ]
-        ];
-
-        $view = 'variables.html.twig';
-
-        $template = $this->twig->load($view);
-        echo $template->render([
-            'usuarios' => $usuarios,
-            'pagina' =>$this->pagina
-        ]);
-    }
-
-    private function goArrays()
-    {
-
-        $usuarios = [
-            [
-                'nome' => 'Rodrigo Blefari Gonçalves',
-                'idade' => 30,
-                'sexo' => 'Masculino'
-            ],
-            [
-                'nome' => 'Maria Joaquina',
-                'idade' => 25,
-                'sexo' => 'Feminino'
-            ]
-        ];
-
-        $view = 'array.html.twig';
-
-        $template = $this->twig->load($view);
-        echo $template->render([
-            'usuarios' => $usuarios,
-            'pagina' =>$this->pagina
-        ]);
-    }
+    //Home
+    private function goHome(){(new homeController())->indexAction();}
+    //Vars
+    private function goVariaveis(){(new variaveisController())->indexAction();}
+    //Filtros
+    private function goFiltros(){(new filtrosController())->indexAction();}
+    //Filtros
+    private function goFuncoes(){(new funcoesController())->indexAction();}
 }

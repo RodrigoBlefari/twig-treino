@@ -1,0 +1,84 @@
+{% extends './layout/default.html.twig' %}
+
+{% block default %}
+{{ parent() }}
+
+<div class="col-12 text-light">
+	<br>
+	<h1 class="text-center">
+		{{ pagina | upper }}
+	</h1>
+	<div class="col-12">
+		<h5>
+			O aplicativo passa variáveis ​​para os modelos para manipulação no modelo. As variáveis ​​também podem ter
+			atributos ou elementos que você pode acessar. A representação visual de uma variável depende muito do
+			aplicativo que a fornece.
+		</h5>
+	</div>
+	<div class="col-12">
+		<h2>Retorno controller: </h2>
+		<div class="alert alert-secondary" role="alert">
+			<code>
+				$usuario = [
+					'nome' => '{{ usuario.nome }}'
+				];
+			</code>
+		</div>
+
+		<div class="jumbotron bg-dark text-light">
+			<h5>#1 - Use um Ponto ( .) para acessar os atributos de uma variável (métodos ou propriedades de um objeto
+				PHP ou itens de uma matriz PHP): </h5>
+			<div class="alert alert-light" role="alert">
+				{{ '{{ ' ~ 'usuario.nome' }} }}
+			</div>
+			<p> Retorno </p>
+			<div class="alert alert-success" role="alert">
+				{{ usuario.nome }}
+			</div>
+		</div>
+
+		<div class="jumbotron bg-dark text-light">
+			<h5>#2 - Se você deseja acessar um atributo dinâmico de uma variável, use a função de atributo.
+				<br> A função <i><b>attribute</i></b> também é útil quando o atributo contém caracteres especiais (como
+				-isso seria interpretado como o operador menos):
+			</h5>
+			<hr>
+			<i>equivalente ao usuario.nome</i>
+			<div class="alert alert-light" role="alert">
+				{{ '{{ ' ~ "attribute(usuario, 'nome')" }} }}
+			</div>
+			<p> Retorno </p>
+			<div class="alert alert-success" role="alert">
+				{{ attribute(usuario, 'nome') }}
+			</div>
+		</div>
+
+		<div class="jumbotron bg-dark text-light">
+			<h5>
+				#3 - Você pode atribuir valores a variáveis ​​dentro de blocos de código. As atribuições usam a tag set
+				:
+			</h5>
+			<hr>
+			<div class="alert alert-light" role="alert">
+				{{ '{% ' ~ "set fruta = 'laranja'" }} %} <br>
+				{{ '{% ' ~ "set frutas = ['melancia', 'abacate']" }} %} <br>
+				{{ '{% ' ~ "set suco = {'suco': 'pessego'}" }} %} <br>
+
+				<hr>
+				{{ '{{ ' ~ 'fruta' }} }}<br>
+				{{ '{{ ' ~ 'frutas[0]' }} }} -- {{ '{{ ' ~ 'frutas[1]' }} }} <br>
+				{{ '{{ ' ~ 'suco.sabor' }} }}
+			</div>
+			<p> Retorno </p>
+			<div class="alert alert-success" role="alert">
+				{% set fruta = 'laranja' %}
+				{% set frutas = ['melancia', 'abacate'] %}
+				{% set suco = {'sabor': 'pessego'} %}
+
+				{{ fruta }}<br>
+				{{ frutas[0] }} -- {{ frutas[1] }} <br>
+				{{ suco.sabor }}
+			</div>
+		</div>
+	</div>
+	{% endblock %}
