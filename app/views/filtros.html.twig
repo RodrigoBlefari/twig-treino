@@ -1,0 +1,79 @@
+{% extends './layout/default.html.twig' %}
+
+{% block default %}
+{{ parent() }}
+
+<div class=" col-12  text-light">
+    <br>
+    <h1 class="text-center">
+        {{ pagina | upper }}
+    </h1>
+    <div class="col-12">
+        <h5>
+            Variáveis ​​podem ser modificadas por filtros . Os filtros são separados da variável por um símbolo de barra
+            vertical ( | ). Vários filtros podem ser encadeados. A saída de um filtro é aplicada ao próximo.
+        </h5>
+    </div>
+    <div class="col-12">
+        <h2>Retorno controller: </h2>
+        <div class="alert alert-secondary" role="alert">
+            <code>
+				$usuario = [
+					'nome' => '{{ usuario.nome }}',
+                    'idade' => 30,
+                    'sexo' => 'masculino',
+				];
+			</code>
+        </div>
+
+        <div class="jumbotron bg-dark text-light">
+            <h5>#1 - O exemplo a seguir <i><b>striptags</i></b> remove todas as tags HTML, dos namecasess e
+                <i><b>title</i></b> deixa primeira letra maiúscula: </h5>
+            <div class="alert alert-light" role="alert">
+                {{ '{{' ~ 'usuario.nome' }}}}
+                <hr>
+                {{ '{{ ' ~ 'usuario.nome|striptags|title' }} }}
+            </div>
+            <p> Retorno</p>
+            <div class="alert alert-success" role="alert">
+                {{ usuario.nome}}
+                <hr>
+                {{ usuario.nome|striptags|title }}
+            </div>
+        </div>
+
+        <div class="jumbotron bg-dark text-light">
+            <h5>
+                #2 - Os filtros que aceitam argumentos têm parênteses em torno dos argumentos. Este exemplo junta os
+                elementos de uma lista por vírgulas:
+            </h5>
+            <hr>
+            <i>equivalente ao usuario.nome</i>
+            <div class="alert alert-light" role="alert">
+                {{ '{{ ' ~ "list|join(', ')" }} }}
+            </div>
+            <p> Retorno </p>
+            <div class="alert alert-success" role="alert">
+                {{ usuario|join(', ') }}
+            </div>
+        </div>
+
+        <div class="jumbotron bg-dark text-light">
+            <h5>
+                #3 - Para aplicar um filtro em uma seção do código, envolva-o com a tag apply :
+            </h5>
+            <hr>
+            <div class="alert alert-light" role="alert">
+                {{ '{% ' ~ 'apply upper' }} %} <br>
+                This text becomes uppercase<br>
+                {{ '{% ' ~ 'endapply' }} %}
+            </div>
+            <p> Retorno </p>
+            <div class="alert alert-success" role="alert">
+                {% apply upper %}
+                This text becomes uppercase
+                {% endapply %}
+            </div>
+        </div>
+    </div>
+    {% endblock %}
