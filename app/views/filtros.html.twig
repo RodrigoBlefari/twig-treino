@@ -5,9 +5,9 @@
 
 <div class=" col-12  text-light">
     <br>
-    <h1 class="text-center">
-        {{ pagina | upper }}
-    </h1>
+	<h1 class="text-center">
+		<i>Filtros</i>
+	</h1>
     <div class="col-12">
         <h5>
             Variáveis ​​podem ser modificadas por filtros . Os filtros são separados da variável por um símbolo de barra
@@ -18,10 +18,10 @@
         <h2>Retorno controller: </h2>
         <div class="alert alert-secondary" role="alert">
             <code>
-				$usuario = [
-					'nome' => '{{ usuario.nome }}',
-                    'idade' => 30,
-                    'sexo' => 'masculino',
+				$usuario = [<br>
+					&ensp;'nome' => '{{ usuario.nome }}',<br>
+                    &ensp;'idade' => {{ usuario.idade }},<br>
+                    &ensp;'sexo' => '{{ usuario.sexo }}'<br>
 				];
 			</code>
         </div>
@@ -30,9 +30,9 @@
             <h5>#1 - O exemplo a seguir <i><b>striptags</i></b> remove todas as tags HTML, dos namecasess e
                 <i><b>title</i></b> deixa primeira letra maiúscula: </h5>
             <div class="alert alert-light" role="alert">
-                {{ '{{' ~ 'usuario.nome' }}}}
+                {{ '{{ usuario.nome' }} }}
                 <hr>
-                {{ '{{ ' ~ 'usuario.nome|striptags|title' }} }}
+                {{ '{{ usuario.nome|striptags|title' }} }}
             </div>
             <p> Retorno</p>
             <div class="alert alert-success" role="alert">
@@ -50,7 +50,7 @@
             <hr>
             <i>equivalente ao usuario.nome</i>
             <div class="alert alert-light" role="alert">
-                {{ '{{ ' ~ "list|join(', ')" }} }}
+                {{ " {{list|join(', ')" }} }}
             </div>
             <p> Retorno </p>
             <div class="alert alert-success" role="alert">
@@ -64,9 +64,9 @@
             </h5>
             <hr>
             <div class="alert alert-light" role="alert">
-                {{ '{% ' ~ 'apply upper' }} %} <br>
+                {{ '{% apply upper' }} %} <br>
                 This text becomes uppercase<br>
-                {{ '{% ' ~ 'endapply' }} %}
+                {{ '{% endapply' }} %}
             </div>
             <p> Retorno </p>
             <div class="alert alert-success" role="alert">

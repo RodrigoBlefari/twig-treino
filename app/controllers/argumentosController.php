@@ -2,7 +2,7 @@
 
 require_once 'app/twigConfig.php';
 
-class variaveisController
+class argumentosController
 {
     public $twig;
     public $pagina;
@@ -10,13 +10,15 @@ class variaveisController
     public function __construct()
     {
         $this->twigConfig = new twigConfig();
-        $this->pagina = 'variaveis';
+        $this->pagina = 'argumentos';
     }
 
     public function indexAction()
     {
         $usuario = [
-            'nome' => 'Rodrigo Blefari Gonçalves'
+            'nome' => 'Rodrigo Blefari Gonçalves',
+            'idade' => 30,
+            'sexo' => 'Masculino'
         ];
 
         $view = $this->pagina . '.html.twig';

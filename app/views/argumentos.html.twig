@@ -1,0 +1,73 @@
+{% extends './layout/default.html.twig' %}
+
+{% block default %}
+{{ parent() }}
+
+<div class="col-12 text-light">
+	<br>
+	<h1 class="text-center">
+		<i>Argumentos nomeados</i>
+	</h1>
+	<div class="col-12">
+		<h5>
+			Novo na versão 1.12: Suporte para argumentos nomeados foi adicionado no Twig 1.12.
+		</h5>
+	</div>
+	<div class="col-12">
+		{# SEM NECESSIDADE DE RETORNO CONTROLLER POR ENQUANTO #}
+		{# <h2>Retorno controller: </h2>
+		<div class="alert alert-secondary" role="alert">
+			<code>
+				$usuario = [<br>
+					&ensp;'nome' => '{{ usuario.nome }}'<br>
+				];
+			</code>
+		</div> #}
+
+		<div class="jumbotron bg-dark text-light">
+			<h5>#1 - Nomeando argumentos loop: </h5>
+			<div class="alert alert-light" role="alert">
+				{{ '{% for i in range(low=1, high=10, step=2) %}' }}<br>
+					{{ '{% i %}' }},<br>
+				{{ '{% endfor %}' }}
+			</div>
+			<p> Retorno </p>
+			<div class="alert alert-success" role="alert">
+				{% for i in range(low=1, high=10, step=2) %}
+    				{{ i }},
+				{% endfor %}
+				...
+			</div>
+		</div>
+
+		<div class="jumbotron bg-dark text-light">
+			<h5>#2 - O uso de argumentos nomeados torna seus modelos mais explícitos sobre o significado dos valores que você passa como argumentos:</h5>
+			<div class="alert alert-light" role="alert">
+				{{ "{{ data|convert_encoding('UTF-8', 'iso-2022-jp')" }} }}<hr>
+				<i>{{ '{# Versos #}' }} </i><br>
+				<hr>
+				{{ "{{ data|convert_encoding(from='iso-2022-jp', to='UTF-8')" }} }}
+			</div>
+		</div>
+
+		<div class="jumbotron bg-dark text-light">
+			<h5>#3 - Os argumentos nomeados também permitem ignorar alguns argumentos para os quais você não deseja alterar o valor padrão:</h5>
+			<div class="alert alert-light" role="alert">
+				<i>{{ '{# o primeiro argumento é o formato da data, que assume como padrão o formato da data global se nulo for passado #}' }} </i><br>
+				{{ "{{ data|convert_encoding('UTF-8', 'iso-2022-jp')" }} }}
+				<hr>
+				<i>{{ '{# ou pule o valor do formato usando um argumento nomeado para o fuso horário #}' }} </i><br>
+				{{ "{{ data|convert_encoding(from='iso-2022-jp', to='UTF-8')" }} }}
+			</div>
+		</div>
+
+		<div class="jumbotron bg-dark text-light">
+			<h5>#3 - Os argumentos nomeados também permitem ignorar alguns argumentos para os quais você não deseja alterar o valor padrão:</h5>
+			<div class="alert alert-light" role="alert">
+				
+				{{ "{{ data|convert_encoding('UTF-8', 'iso-2022-jp')" }} }}
+		
+			</div>
+		</div>
+	</div>
+	{% endblock %}
