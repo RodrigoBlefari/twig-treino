@@ -10,7 +10,8 @@ class funcoesController
     public function __construct()
     {
         $this->twigConfig = new twigConfig();
-        $this->pagina = 'funcoes';
+        $this->pagina = 'home';
+        if (array_key_exists('pg', $_REQUEST)) $this->pagina = $_REQUEST['pg'];
     }
 
     public function indexAction()

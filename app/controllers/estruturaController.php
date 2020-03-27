@@ -10,22 +10,23 @@ class estruturaController
     public function __construct()
     {
         $this->twigConfig = new twigConfig();
-        $this->pagina = 'filtros';
+        $this->pagina = 'home';
+        if (array_key_exists('pg', $_REQUEST)) $this->pagina = $_REQUEST['pg'];
     }
 
     public function indexAction()
     {
-        $usuario = [
-            'nome' => '<h1> rodrigo blefari gonçalves </h1>',
-            'idade' => 30,
-            'sexo' => 'masculino',
+        $usuarios = [
+            ['nome' => 'rodrigo blefari gonçalves'],
+            ['nome' => 'maria joana'],
+            ['nome' => 'josué souza'],
         ];
 
         $view = $this->pagina . '.html.twig';
 
         $template = $this->twigConfig->twig->load($view);
         echo $template->render([
-            'usuario' => $usuario,
+            'usuarios' => $usuarios,
             'pagina' => $this->pagina
         ]);
     }

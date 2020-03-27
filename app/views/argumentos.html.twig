@@ -59,14 +59,22 @@
 				<i>{{ '{# ou pule o valor do formato usando um argumento nomeado para o fuso horário #}' }} </i><br>
 				{{ "{{ data|convert_encoding(from='iso-2022-jp', to='UTF-8')" }} }}
 			</div>
+			<p> Retorno </p>
+			<div class="alert alert-success" role="alert">
+				{{ "now"|date(null, "Europe/Paris") }}
+				<hr>
+				{{ "now"|date(timezone="Europe/Paris") }}
+			</div>
 		</div>
 
 		<div class="jumbotron bg-dark text-light">
-			<h5>#3 - Os argumentos nomeados também permitem ignorar alguns argumentos para os quais você não deseja alterar o valor padrão:</h5>
+			<h5>#4 - Os argumentos nomeados também permitem ignorar alguns argumentos para os quais você não deseja alterar o valor padrão:</h5>
 			<div class="alert alert-light" role="alert">
-				
 				{{ "{{ data|convert_encoding('UTF-8', 'iso-2022-jp')" }} }}
-		
+			</div>
+			<p> Retorno </p>
+			<div class="alert alert-success" role="alert">
+				{{ "now"|date('d/m/Y H:i', timezone="Europe/Paris") }}
 			</div>
 		</div>
 	</div>

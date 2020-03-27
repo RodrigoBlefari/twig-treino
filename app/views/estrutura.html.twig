@@ -1,0 +1,69 @@
+{% extends './layout/default.html.twig' %}
+
+{% block default %}
+{{ parent() }}
+
+<div class="col-12 text-light">
+	<br>
+	<h1 class="text-center">
+		<i>Funções</i>
+	</h1>
+	<div class="col-12">
+		<h5>
+			Uma estrutura de controle refere-se a todas as coisas que controlam o fluxo de um programa - condicionais (ie if/ elseif/ else), for-loops, bem como coisas como blocos. As estruturas de controle aparecem dentro dos blocos. { % ... % };
+		</h5>
+	</div>
+	<div class="col-12">
+
+		<h2>Retorno controller: </h2>
+		<div class="alert alert-secondary" role="alert">
+			<code>
+				$usuarios = [<br>
+					&ensp;['nome' => '{{ usuarios[0].nome }}'],<br>
+                    &ensp;['nome' => '{{ usuarios[1].nome }}'],<br>
+                    &ensp;['nome' => '{{ usuarios[2].nome }}']<br>
+				];
+			</code>
+		</div>
+
+		<div class="jumbotron bg-dark text-light">
+			<h5>#1 - Por exemplo, para exibir uma lista de usuários fornecida em uma variável chamada users, use a tag for:</h5>
+			<div class="alert alert-light" role="alert">
+            < ul> <br>
+				{{ '{% for usuario in usuarios %}' }}<br>
+					 &ensp;{{ '< li> {{ usuario.nome' }} }} < /li>,<br>
+				{{ '{% endfor %}' }}<br>
+			< /ul>
+            </div>
+			<p> Retorno </p>
+			<div class="alert alert-success" role="alert">
+                <ul>
+                    {% for usuario in usuarios %}
+                        <li>{{ usuario.nome|e }}</li>
+                    {% endfor %}
+                </ul>
+			</div>
+		</div>
+
+        <div class="jumbotron bg-dark text-light">
+			<h5>#2 - A tag if pode ser usada para testar uma expressão:</h5>
+			<div class="alert alert-light" role="alert">
+            < ul> <br>
+				{{ '{% if users|length > 0  %}' }}<br>
+                &ensp;&ensp;&ensp;{{ '{% for usuario in usuarios %}' }}<br>
+					 &ensp;&ensp;{{ '< li> {{ usuario.nome' }} }} < /li>,<br>
+				&ensp;&ensp;&ensp;{{ '{% endfor %}' }}<br>
+                {{ '{% endif %}' }}<br>
+			< /ul>
+            </div>
+			<p> Retorno </p>
+			<div class="alert alert-success" role="alert">
+                <ul>
+                    {% for usuario in usuarios %}
+                        <li>{{ usuario.nome|e }}</li>
+                    {% endfor %}
+                </ul>
+			</div>
+        </div>
+	</div>
+	{% endblock %}
