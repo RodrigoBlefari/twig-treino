@@ -2,7 +2,7 @@
 
 require_once 'app/twigConfig.php';
 
-class filtrosController
+class comentariosController
 {
     public $twig;
     public $pagina;

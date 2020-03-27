@@ -2,7 +2,7 @@
 
 require_once 'app/twigConfig.php';
 
-class filtrosController
+class comparacoesController
 {
     public $twig;
     public $pagina;

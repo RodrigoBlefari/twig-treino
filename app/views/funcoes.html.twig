@@ -6,78 +6,39 @@
 <div class="col-12 text-light">
 	<br>
 	<h1 class="text-center">
-		{{ pagina | upper }}
+		<i>Funções</i>
 	</h1>
 	<div class="col-12">
 		<h5>
-			Funções podem ser chamadas para gerar conteúdo. As funções são chamadas pelo nome seguido de parênteses ( ()) e podem ter argumentos.
+			Funções podem ser chamadas para gerar conteúdo. As funções são chamadas pelo nome seguido de parênteses ( ( ) ) e podem ter argumentos.
 		</h5>
 	</div>
 	<div class="col-12">
-		<h2>Retorno controller: </h2>
+		{# SEM NECESSIDADE DE RETORNO CONTROLLER POR ENQUANTO #}
+		{# <h2>Retorno controller: </h2>
 		<div class="alert alert-secondary" role="alert">
 			<code>
-				$usuario = [
-					'nome' => '{{ usuario.nome }}'
+				$usuario = [<br>
+					&ensp;'nome' => '{{ usuario.nome }}'<br>
 				];
 			</code>
-		</div>
+		</div> #}
 
 		<div class="jumbotron bg-dark text-light">
 			<h5>#1 - Por exemplo, a rangefunção retorna uma lista contendo uma progressão aritmética de números inteiros:</h5>
 			<div class="alert alert-light" role="alert">
-				{{ '{{ usuario.nome' }} }}<br>
 				{{ '{% for i in range(0, 3) %}' }}<br>
 					{{ '{% i %}' }},<br>
-				{{ '{% endfor %}' }} 
+				{{ '{% endfor %}' }}<br>
+				...
+				
 			</div>
 			<p> Retorno </p>
 			<div class="alert alert-success" role="alert">
-				{{ usuario.nome }}
-			</div>
-		</div>
-
-		<div class="jumbotron bg-dark text-light">
-			<h5>#2 - Se você deseja acessar um atributo dinâmico de uma variável, use a função de atributo.
-				<br> A função <i><b>attribute</i></b> também é útil quando o atributo contém caracteres especiais (como
-				-isso seria interpretado como o operador menos):
-			</h5>
-			<hr>
-			<i>equivalente ao usuario.nome</i>
-			<div class="alert alert-light" role="alert">
-				{{ '{{ ' ~ "attribute(usuario, 'nome')" }} }}
-			</div>
-			<p> Retorno </p>
-			<div class="alert alert-success" role="alert">
-				{{ attribute(usuario, 'nome') }}
-			</div>
-		</div>
-
-		<div class="jumbotron bg-dark text-light">
-			<h5>
-				#3 - Você pode atribuir valores a variáveis ​​dentro de blocos de código. As atribuições usam a tag set
-				:
-			</h5>
-			<hr>
-			<div class="alert alert-light" role="alert">
-				{{ '{% ' ~ "set fruta = 'laranja'" }} %} <br>
-				{{ '{% ' ~ "set frutas = ['melancia', 'abacate']" }} %} <br>
-				{{ '{% ' ~ "set suco = {'suco': 'pessego'}" }} %} <br>
-
-				<hr>
-				{{ '{{ ' ~ 'fruta' }} }}<br>
-				{{ '{{ ' ~ 'frutas[0]' }} }} -- {{ '{{ ' ~ 'frutas[1]' }} }} <br>
-				{{ '{{ ' ~ 'suco.sabor' }} }}
-			</div>
-			<p> Retorno </p>
-			<div class="alert alert-success" role="alert">
-				{% set fruta = 'laranja' %}
-				{% set frutas = ['melancia', 'abacate'] %}
-				{% set suco = {'sabor': 'pessego'} %}
-
-				{{ fruta }}<br>
-				{{ frutas[0] }} -- {{ frutas[1] }} <br>
-				{{ suco.sabor }}
+				{% for i in range(0, 3) %}
+    				{{ i }},
+				{% endfor %}
+				...
 			</div>
 		</div>
 	</div>

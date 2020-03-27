@@ -10,15 +10,14 @@ class variaveisController
     public function __construct()
     {
         $this->twigConfig = new twigConfig();
-        $this->pagina = 'variaveis';
+        $this->pagina = 'home';
+        if (array_key_exists('pg', $_REQUEST)) $this->pagina = $_REQUEST['pg'];
     }
 
     public function indexAction()
     {
         $usuario = [
-            'nome' => 'Rodrigo Blefari Gonçalves',
-            'idade' => 30,
-            'sexo' => 'Masculino'
+            'nome' => 'Rodrigo Blefari Gonçalves'
         ];
 
         $view = $this->pagina . '.html.twig';

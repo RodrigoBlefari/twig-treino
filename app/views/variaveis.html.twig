@@ -6,7 +6,7 @@
 <div class="col-12 text-light">
 	<br>
 	<h1 class="text-center">
-		{{ pagina | upper }}
+		<i>Variáveis</i>
 	</h1>
 	<div class="col-12">
 		<h5>
@@ -19,8 +19,8 @@
 		<h2>Retorno controller: </h2>
 		<div class="alert alert-secondary" role="alert">
 			<code>
-				$usuario = [
-					'nome' => '{{ usuario.nome }}'
+				$usuario = [<br>
+					&ensp;'nome' => '{{ usuario.nome }}'<br>
 				];
 			</code>
 		</div>
@@ -29,7 +29,7 @@
 			<h5>#1 - Use um Ponto ( .) para acessar os atributos de uma variável (métodos ou propriedades de um objeto
 				PHP ou itens de uma matriz PHP): </h5>
 			<div class="alert alert-light" role="alert">
-				{{ '{{ ' ~ 'usuario.nome' }} }}
+				{{ '{{ usuario.nome' }} }}
 			</div>
 			<p> Retorno </p>
 			<div class="alert alert-success" role="alert">
@@ -45,7 +45,7 @@
 			<hr>
 			<i>equivalente ao usuario.nome</i>
 			<div class="alert alert-light" role="alert">
-				{{ '{{ ' ~ "attribute(usuario, 'nome')" }} }}
+				{{ "{{ attribute(usuario, 'nome')" }} }}
 			</div>
 			<p> Retorno </p>
 			<div class="alert alert-success" role="alert">
@@ -60,14 +60,14 @@
 			</h5>
 			<hr>
 			<div class="alert alert-light" role="alert">
-				{{ '{% ' ~ "set fruta = 'laranja'" }} %} <br>
-				{{ '{% ' ~ "set frutas = ['melancia', 'abacate']" }} %} <br>
-				{{ '{% ' ~ "set suco = {'suco': 'pessego'}" }} %} <br>
+				{{ "{% set fruta = 'laranja'" }} %} <br>
+				{{ "{% set frutas = ['melancia', 'abacate']" }} %} <br>
+				{{ "{% set suco = {'suco': 'pessego'}" }} %} <br>
 
 				<hr>
-				{{ '{{ ' ~ 'fruta' }} }}<br>
-				{{ '{{ ' ~ 'frutas[0]' }} }} -- {{ '{{ ' ~ 'frutas[1]' }} }} <br>
-				{{ '{{ ' ~ 'suco.sabor' }} }}
+				{{ '{{ fruta' }} }}<br>
+				{{ '{{ frutas[0]' }} }} -- {{ '{{ frutas[1]' }} }} <br>
+				{{ '{{ suco.sabor' }} }}
 			</div>
 			<p> Retorno </p>
 			<div class="alert alert-success" role="alert">

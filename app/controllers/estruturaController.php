@@ -2,7 +2,7 @@
 
 require_once 'app/twigConfig.php';
 
-class filtrosController
+class estruturaController
 {
     public $twig;
     public $pagina;
@@ -16,17 +16,17 @@ class filtrosController
 
     public function indexAction()
     {
-        $usuario = [
-            'nome' => '<h1> rodrigo blefari gonçalves </h1>',
-            'idade' => 30,
-            'sexo' => 'masculino',
+        $usuarios = [
+            ['nome' => 'rodrigo blefari gonçalves'],
+            ['nome' => 'maria joana'],
+            ['nome' => 'josué souza'],
         ];
 
         $view = $this->pagina . '.html.twig';
 
         $template = $this->twigConfig->twig->load($view);
         echo $template->render([
-            'usuario' => $usuario,
+            'usuarios' => $usuarios,
             'pagina' => $this->pagina
         ]);
     }

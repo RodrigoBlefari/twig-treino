@@ -2,7 +2,7 @@
 
 require_once 'app/twigConfig.php';
 
-class filtrosController
+class escapamentoController
 {
     public $twig;
     public $pagina;
